@@ -13,8 +13,8 @@ Implements sending of infrared remote control commands using (subsets of)
 ## Compatibility
 
 Known to work with
-* IrScrutinizer 1.1.2 from https://github.com/bengtmartensson/harctoolboxbundle
-* iPhone iRule app with remote created with cloud codes online at http://iruleathome.com
+* [IrScrutinizer](https://github.com/bengtmartensson/harctoolboxbundle/releases), a very powerful software to work with infrared remote control codes, see the [IrScrutinizer Guide](http://www.hifi-remote.com/wiki/index.php?title=IrScrutinizer_Guide) to get an impression of what it can do
+* Android/iOS [iRule app](http://iruleathome.com) with remote created with cloud codes online at http://iruleathome.com
 
 ## Example use case
 
