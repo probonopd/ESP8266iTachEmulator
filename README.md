@@ -1,5 +1,9 @@
 # ESP8266iTachEmulator
 
+Send infrared remote control signals via WLAN using an ESP8266
+
+![irbox](https://cloud.githubusercontent.com/assets/2480569/17837757/ea087514-67bb-11e6-9638-3812f706d5da.JPG)
+
 ## Purpose
 
 Implements sending of infrared remote control commands using (subsets of)
