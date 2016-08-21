@@ -103,6 +103,7 @@ Pull requests welcome!
 * Implement learning - ideally we could use the sending LED for this 
 * A HTTP GUI for sending codes that are stored in SPIFFS and can be managed using a GUI
 * Implement a [GIRS server](https://github.com/bengtmartensson/AGirs/tree/master/src/GirsLite)
+* MQTT
 
 ## Credits
 
