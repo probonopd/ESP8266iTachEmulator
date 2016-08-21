@@ -14,6 +14,9 @@ Known to work with
 
 ## Building
 
+**ESP8266iTachEmulatorGUI** is the most recent version that should be used. It uses [ESP Manager](https://github.com/sticilface/ESPmanager) to provide a GUI to set up the WLAN credentials, over-the-air updates, etc.
+
+
 ```
 # Get the libraries
 sudo apt-get install -y git
@@ -24,6 +27,10 @@ cd Arduino/libraries/
 git clone https://github.com/sebastienwarin/IRremoteESP8266.git
 git clone https://github.com/sui77/rc-switch.git
 git clone https://github.com/probonopd/ProntoHex.git
+git clone https://github.com/sticilface/ESPmanager.git
+git clone https://github.com/me-no-dev/ESPAsyncWebServer.git
+git clone https://github.com/me-no-dev/ESPAsyncTCP.git
+git clone https://github.com/bblanchon/ArduinoJson.git
 
 # Get the SPIFFS uploader if you don't have it yet
 mkdir $HOME/Arduino/tools
@@ -41,9 +48,12 @@ Arduino-1.6.11.hourly201608161225.esp497d19d-x86_64.AppImage
 
 * ArduinoJson 409ca7e
 * ESPAsyncTCP 5987225
-* ESPAsyncUDP 18bbb5d
 * ESPAsyncWebServer bfde9bc
 * ESPmanager 6c902fb
 * IRremoteESP8266 fee16e8
 * ProntoHex 847a608
 * rc-switch 62b9ebf
+
+## TODO
+
+* Switch everything to async, e.g., using ESPAsyncUDP
