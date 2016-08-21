@@ -59,3 +59,5 @@ Arduino-1.6.11.hourly201608161225.esp497d19d-x86_64.AppImage
 ## TODO
 
 * Switch everything to async, e.g., using ESPAsyncUDP
+* Implement receiving/learning (sebastienwarin/IRremoteESP8266 supports it)
+* A HTTP GUI for sending codes that are stored in SPIFFS and can be managed using a GUI
