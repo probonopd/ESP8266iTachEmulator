@@ -31,8 +31,6 @@
 
 #include <ESP8266WiFi.h>
 #include <IRremoteESP8266.h>
-
-
 #include <RCSwitch.h>
 #include <ProntoHex.h>
 
@@ -48,20 +46,15 @@
 #include <Hash.h>
 #include <ESPmanager.h>
 
-
 AsyncWebServer HTTP(80);
 ESPmanager settings(HTTP, SPIFFS);
 
-////
+// GPIO12 = 12 = labelled "D6" on the NodeMCU board
 const int infraredLedPin = 12; // ############# CHECK IF THE LED OR TRANSISTOR (RECOMMENDED) IS ACTUALLY ATTACHED TO THIS PIN 
 
 extern const String MYVAL;
 
-const char* host = "wf2ir";
-const uint16_t ota_port = 8266;
-WiFiServer TelnetServer(ota_port);
 WiFiClient Telnet;
-WiFiUDP OTA;
 
 IRsend irsend(infraredLedPin);
 
@@ -72,7 +65,6 @@ int freq;
 RCSwitch mySwitch = RCSwitch();
 
 ProntoHex ph = ProntoHex();
-
 
 // A WiFi server for telnet-like communication on port 4998
 #define MAX_SRV_CLIENTS 10 // How many clients may connect at the same time

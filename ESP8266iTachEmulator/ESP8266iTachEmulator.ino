@@ -38,12 +38,13 @@
 #include <RCSwitch.h>
 #include <ProntoHex.h>
 
+// GPIO12 = 12 = labelled "D6" on the NodeMCU board
 const int infraredLedPin = 12; // ############# CHECK IF THE LED OR TRANSISTOR (RECOMMENDED) IS ACTUALLY ATTACHED TO THIS PIN 
 
 extern const String MYVAL;
 
-const char* ssid = "********";
-const char* password = "********";
+const char* ssid = "******";
+const char* password = ""******";
 
 const char* host = "wf2ir";
 const uint16_t ota_port = 8266;
