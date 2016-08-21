@@ -1,32 +1,32 @@
 /*
- Implements a subset of the iTach API Specification Version 1.5
- http://www.globalcache.com/files/docs/API-iTach.pdf
- and
- LIRC server including the SEND_CCF_ONCE extensions
- http://www.harctoolbox.org/lirc_ccf.html#Extensions+to+the+irsend+command
-  
- Tested with
- - IrScrutinizer 1.1.2 from https://github.com/bengtmartensson/harctoolboxbundle
- - iPhone iRule app with remote created with cloud codes online at http://iruleathome.com
+  Implements a subset of the iTach API Specification Version 1.5
+  http://www.globalcache.com/files/docs/API-iTach.pdf
+  and
+  LIRC server including the SEND_CCF_ONCE extensions
+  http://www.harctoolbox.org/lirc_ccf.html#Extensions+to+the+irsend+command
 
- TODO: Implement capture https://github.com/sebastienwarin/IRremoteESP8266
-       Implement repeats
-       Implement more commands, e.g., stopir
-       Check with OpenRemote http://sourceforge.net/projects/openremote/
-       Check with apps from http://www.globalcache.com/partners/control-apps/
-       MQTT? 
-       WebSockets?
-       Decode and Encode using John S. Fine's algorithms?
-       Art-Net DMX512-A (professional stage lighting; apps exist)
+  Tested with
+  - IrScrutinizer 1.1.2 from https://github.com/bengtmartensson/harctoolboxbundle
+  - iPhone iRule app with remote created with cloud codes online at http://iruleathome.com
+
+  TODO: Implement capture https://github.com/sebastienwarin/IRremoteESP8266
+        Implement repeats
+        Implement more commands, e.g., stopir
+        Check with OpenRemote http://sourceforge.net/projects/openremote/
+        Check with apps from http://www.globalcache.com/partners/control-apps/
+        MQTT?
+        WebSockets?
+        Decode and Encode using John S. Fine's algorithms?
+        Art-Net DMX512-A (professional stage lighting; apps exist)
 */
 
 /*
- * Circuit:
- * To get good range, attach a resistor to pin 12 of the ESP-12E and connect the resistor to the G pin of a 2N7000 transistor.
- * If you look at the flat side of the 2N7000 you have S, G, D pins.
- * Connect S to GND, G to the resistor to the MCU, and D to the IR LED short pin.
- * The long pin of the IR LED is connected to +3.3V.
- * I picked the 2N7000 because unlike others it will not pull pin 2 down which would prevent the chip from booting.
+ Circuit:
+ To get good range, attach a resistor to pin 12 of the ESP-12E and connect the resistor to the G pin of a 2N7000 transistor.
+ If you look at the flat side of the 2N7000 you have S, G, D pins.
+ Connect S to GND, G to the resistor to the MCU, and D to the IR LED short pin.
+ The long pin of the IR LED is connected to +3.3V.
+ I picked the 2N7000 because unlike others it will not pull pin 2 down which would prevent the chip from booting.
 */
 
 #include <ESP8266WiFi.h>
@@ -50,7 +50,7 @@ AsyncWebServer HTTP(80);
 ESPmanager settings(HTTP, SPIFFS);
 
 // GPIO12 = 12 = labelled "D6" on the NodeMCU board
-const int infraredLedPin = 12; // ############# CHECK IF THE LED OR TRANSISTOR (RECOMMENDED) IS ACTUALLY ATTACHED TO THIS PIN 
+const int infraredLedPin = 12; // ############# CHECK IF THE LED OR TRANSISTOR (RECOMMENDED) IS ACTUALLY ATTACHED TO THIS PIN
 
 extern const String MYVAL;
 
@@ -97,7 +97,7 @@ void setup() {
   mySwitch.enableTransmit(3); // Pin 3 is RXD; 433 MHz
 
   ////////////
-  
+
   Serial.begin(115200);
   SPIFFS.begin();
 
@@ -109,13 +109,18 @@ void setup() {
 
   settings.begin();
 
+  // https://github.com/me-no-dev/ESPAsyncWebServer
+  HTTP.on("/", HTTP_ANY, [](AsyncWebServerRequest * request) {
+    request->send(200, "text/plain", "WF2IR on port 4998 and LIRC server on port 4998 and debug telnet server on port 22");
+  });
+
   HTTP.begin();
 
   Serial.print(F("Free Heap: "));
   Serial.println(ESP.getFreeHeap());
 
   ////////////
-  
+
   // mySwitch.switchOff(4, 2); // ###################################################### Works!
 
   // Start telnet server
