@@ -12,6 +12,12 @@ Known to work with
 * IrScrutinizer 1.1.2 from https://github.com/bengtmartensson/harctoolboxbundle
 * iPhone iRule app with remote created with cloud codes online at http://iruleathome.com
 
+## Example use case
+
+Send infrared remote codes via WLAN from [IRScrutinizer](https://github.com/bengtmartensson/harctoolboxbundle)
+
+![IRScrutinizer](http://www.hifi-remote.com/wiki/images/7/77/Irscrutinizer_F9.png)
+
 ## Building
 
 **ESP8266iTachEmulatorGUI** is the most recent version that should be used. It uses [ESP Manager](https://github.com/sticilface/ESPmanager) to provide a GUI to set up the WLAN credentials, over-the-air updates, etc.
