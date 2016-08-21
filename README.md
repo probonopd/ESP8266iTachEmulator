@@ -56,6 +56,30 @@ Arduino-1.6.11.hourly201608161225.esp497d19d-x86_64.AppImage
 # Upload the SPIFFS for the ESP Manager from the ESP Manager sample sketch using the SPIFFS uploader.
 ```
 
+### Hardware
+
+Minimal hardware needed:
+
+* NodeMCU 1.0 module (around USD 3 from China shipped) or, if it should fit a small enclosure as shown on the picture, 1 bare ESP12E module (around USD 2 from China shipped; in this case need a matching programming jig too in order to flash it initially, and you need to use the usual minimal circuit to pull up CH_PD and pull down GPIO15)
+* Infrared LED
+* 2N7000 N-channel transistor
+* Resistor to drive the transistor
+
+Circut:
+
+* To get good range, attach a resistor to pin 12 of the ESP-12E and connect the resistor to the G pin of a 2N7000 transistor
+* If you look at the flat side of the 2N7000 you have S, G, D pins.
+* Connect S to GND, G to the resistor to the MCU, and D to the IR LED short pin.
+* The long pin of the IR LED is connected to +3.3V.
+* I picked the 2N7000 because unlike others it will not pull GPIO2 down which would prevent the chip from booting (if using an ESP-1 module; I prefer ESP-12 now)
+
+Improvements regarding the hardware setup welcome! 
+
+Issue with this hardware setup: 
+* Probably does not use full range potential of the LED; should change the circuit so that it maximizes the allowable burst current of the LED
+* During bootup of the ESP, the LED is lit. If we want to change the circuit so that it maximizes the allowable burst current of the LED, then this must not happen
+* Not using a resistor in series with the LED is not a good idea
+
 ### Versions of libaries known to work
 
 * ArduinoJson 409ca7e
