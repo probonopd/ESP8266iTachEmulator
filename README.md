@@ -99,7 +99,8 @@ Connect with telnet to port 22 for debug output. I am using this debug port inst
 Pull requests welcome!
 
 * Switch everything to async, e.g., using ESPAsyncUDP
-* Implement receiving/learning (sebastienwarin/IRremoteESP8266 supports it)
+* Implement receiving (sebastienwarin/IRremoteESP8266 supports it) using a TSOP
+* Implement learning - ideally we could use the sending LED for this 
 * A HTTP GUI for sending codes that are stored in SPIFFS and can be managed using a GUI
 
 ## Credits
