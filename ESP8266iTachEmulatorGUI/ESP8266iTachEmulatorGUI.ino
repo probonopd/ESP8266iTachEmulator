@@ -93,6 +93,7 @@ extern "C" {
 
 void setup() {
 
+  irsend.begin();
   mySwitch.enableTransmit(3); // Pin 3 is RXD; 433 MHz
 
   ////////////
