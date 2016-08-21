@@ -42,6 +42,8 @@ cd -
 
 # Then compile with
 Arduino-1.6.11.hourly201608161225.esp497d19d-x86_64.AppImage
+
+Upload the SPIFFS for the ESP Manager from the ESP Manager sample sketch using the SPIFFS uploader.
 ```
 
 ### Versions of libaries known to work
