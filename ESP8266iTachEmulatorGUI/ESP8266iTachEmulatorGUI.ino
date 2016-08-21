@@ -111,7 +111,7 @@ void setup() {
 
   // https://github.com/me-no-dev/ESPAsyncWebServer
   HTTP.on("/", HTTP_ANY, [](AsyncWebServerRequest * request) {
-    request->send(200, "text/plain", "WF2IR on port 4998 and LIRC server on port 4998 and debug telnet server on port 22");
+    request->send(200, "text/html", "<html><body><p>WF2IR on port 4998 and LIRC server on port 4998 and debug telnet server on port 22</p><p><a href='/espman/'>Administration</a></p></body></html>");
   });
 
   HTTP.begin();
