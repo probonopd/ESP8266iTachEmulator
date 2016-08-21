@@ -62,6 +62,10 @@ Arduino-1.6.11.hourly201608161225.esp497d19d-x86_64.AppImage
 * ProntoHex 847a608
 * rc-switch 62b9ebf
 
+## Debugging
+
+Connect with telnet to port 22 for debug output. I am using this debug port instead of/in addition to a serial line.
+
 ## TODO
 
 * Switch everything to async, e.g., using ESPAsyncUDP
