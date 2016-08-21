@@ -72,6 +72,14 @@ Connect with telnet to port 22 for debug output. I am using this debug port inst
 
 ## TODO
 
+Pull requests welcome!
+
 * Switch everything to async, e.g., using ESPAsyncUDP
 * Implement receiving/learning (sebastienwarin/IRremoteESP8266 supports it)
 * A HTTP GUI for sending codes that are stored in SPIFFS and can be managed using a GUI
+
+## Credits
+
+* igrr for esp8266/Arduino
+* The authors of the libraries used
+* sticilface for ESPmanager and help while debugging
