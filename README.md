@@ -34,13 +34,13 @@ cd $HOME
 # rm -rf Arduino/ # Uncomment this if you are sure what you are doing
 mkdir -p Arduino/libraries/
 cd Arduino/libraries/
-git clone https://github.com/sebastienwarin/IRremoteESP8266.git
-git clone https://github.com/sui77/rc-switch.git
-git clone https://github.com/probonopd/ProntoHex.git
-git clone https://github.com/sticilface/ESPmanager.git
-git clone https://github.com/me-no-dev/ESPAsyncWebServer.git
-git clone https://github.com/me-no-dev/ESPAsyncTCP.git
-git clone https://github.com/bblanchon/ArduinoJson.git
+git clone -o fee16e8 https://github.com/sebastienwarin/IRremoteESP8266.git
+git clone -o 62b9ebf https://github.com/sui77/rc-switch.git
+git clone -o 847a608 https://github.com/probonopd/ProntoHex.git
+git clone -o 6c902fb https://github.com/sticilface/ESPmanager.git
+git clone -o bfde9bc https://github.com/me-no-dev/ESPAsyncWebServer.git
+git clone -o 5987225 https://github.com/me-no-dev/ESPAsyncTCP.git
+git clone -o 409ca7e https://github.com/bblanchon/ArduinoJson.git
 
 # Get the SPIFFS uploader if you don't have it yet
 mkdir $HOME/Arduino/tools
