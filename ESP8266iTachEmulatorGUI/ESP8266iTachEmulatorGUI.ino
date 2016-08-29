@@ -162,7 +162,7 @@ void dump(decode_results *results) {
     }
     stringDecode += ",";
   }
-
+  stringDecode.remove(stringDecode.length()-1); // Remove the last ","
   Serial.println(stringDecode);
 
   if (clientToSendReceivedCodeTo != MAX_SRV_CLIENTS) {
