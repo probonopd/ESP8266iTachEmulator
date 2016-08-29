@@ -21,12 +21,12 @@
 */
 
 /*
- Circuit:
- To get good range, attach a resistor to pin 12 of the ESP-12E and connect the resistor to the G pin of a 2N7000 transistor.
- If you look at the flat side of the 2N7000 you have S, G, D pins.
- Connect S to GND, G to the resistor to the MCU, and D to the IR LED short pin.
- The long pin of the IR LED is connected to +3.3V.
- I picked the 2N7000 because unlike others it will not pull pin 2 down which would prevent the chip from booting.
+  Circuit:
+  To get good range, attach a resistor to pin 12 of the ESP-12E and connect the resistor to the G pin of a 2N7000 transistor.
+  If you look at the flat side of the 2N7000 you have S, G, D pins.
+  Connect S to GND, G to the resistor to the MCU, and D to the IR LED short pin.
+  The long pin of the IR LED is connected to +3.3V.
+  I picked the 2N7000 because unlike others it will not pull pin 2 down which would prevent the chip from booting.
 */
 
 #include <ESP8266WiFi.h>
@@ -91,9 +91,14 @@ extern "C" {
 #include "user_interface.h"
 }
 
+int RECV_PIN = D1; // an IR detector/demodulatord
+IRrecv irrecv(RECV_PIN);
+decode_results results;
+
 void setup() {
 
   irsend.begin();
+  irrecv.enableIRIn(); // Start the receiver
   mySwitch.enableTransmit(3); // Pin 3 is RXD; 433 MHz
 
   ////////////
@@ -138,12 +143,47 @@ void setup() {
   sendDiscoveryBeacon();
 }
 
+String stringDecode;
+
+int clientToSendReceivedCodeTo = MAX_SRV_CLIENTS;
+
+void dump(decode_results *results) {
+  int count = results->rawlen;
+  unsigned long freq = 38400;        // FIXME DON'T HARDCODE _________________________________________
+  stringDecode = "sendir,1:0,0,";
+  stringDecode += freq;
+  stringDecode += (",1,1,");
+  for (int i = 1; i < count; i++) {
+    if (i & 1) {
+      stringDecode += results->rawbuf[i] * USECPERTICK * freq / 1000000 - 1, DEC;
+    } else
+    {
+      stringDecode += (unsigned long) results->rawbuf[i] * USECPERTICK * freq / 1000000 - 1, DEC;
+    }
+    stringDecode += ",";
+  }
+
+  Serial.println(stringDecode);
+
+  if (clientToSendReceivedCodeTo != MAX_SRV_CLIENTS) {
+    send(clientToSendReceivedCodeTo, stringDecode);
+    clientToSendReceivedCodeTo = MAX_SRV_CLIENTS;
+  }
+
+}
+
 String inData;
 String lircInData;
 
 void loop() {
 
   settings.handle();
+
+  if (irrecv.decode(&results))
+  {
+    dump(&results);
+    irrecv.resume(); // Receive the next value
+  }
 
   // Periodically send UDP Discovery Beacon
   unsigned long currentMillis = millis();
@@ -215,11 +255,13 @@ void loop() {
           }
 
           if (inData == "get_IRL") {
-            send(i, "IR Learner Disabled"); // TODO: Implement capture (once IRremoteESP8266 supports it)
+            send(i, "IR Learner Enabled");
+            clientToSendReceivedCodeTo = i;
+            // send(i, "sendir,1:1,4,38400,1,69,347,173,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,65,22,65,22,65,22,65,22,65,22,65,22,65,22,65,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,65,22,65,22,65,22,65,22,65,22,65,22,65,22,65,22,1527,347,87,22,3692");
           }
 
           if (inData == "stop_IRL") {
-            send(i, "IR Learner Disabled"); // TODO: Implement capture (once IRremoteESP8266 supports it)
+            send(i, "IR Learner Disabled");
           }
 
           if (inData == "getversion,0")
