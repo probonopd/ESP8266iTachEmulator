@@ -4,11 +4,9 @@
   and
   LIRC server including the SEND_CCF_ONCE extensions
   http://www.harctoolbox.org/lirc_ccf.html#Extensions+to+the+irsend+command
-
   Tested with
   - IrScrutinizer 1.1.2 from https://github.com/bengtmartensson/harctoolboxbundle
   - iPhone iRule app with remote created with cloud codes online at http://iruleathome.com
-
   TODO: Implement capture https://github.com/sebastienwarin/IRremoteESP8266
         Implement repeats
         Implement more commands, e.g., stopir
@@ -264,6 +262,9 @@ void loop() {
             send(i, "IR Learner Disabled");
           }
 
+          if (inData == "getversion")
+            send(i, "1.0");
+            
           if (inData == "getversion,0")
             send(i, "1.0");
 
@@ -432,4 +433,3 @@ String macToStr(const uint8_t* mac)
   }
   return result;
 }
-
