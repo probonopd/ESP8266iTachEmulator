@@ -151,7 +151,7 @@ void dump(decode_results *results) {
   stringDecode = "sendir,1:0,0,";
   stringDecode += freq;
   stringDecode += (",1,1,");
-  for (int i = 1; i < count; i++) {
+  for (int i = 0; i < count; i++) {
     if (i & 1) {
       stringDecode += results->rawbuf[i] * USECPERTICK * freq / 1000000 - 1, DEC;
     } else
@@ -160,14 +160,14 @@ void dump(decode_results *results) {
     }
     stringDecode += ",";
   }
-  stringDecode.remove(stringDecode.length()-1); // Remove the last ","
+  stringDecode += "999";
   Serial.println(stringDecode);
+  debugSend(stringDecode);
 
   if (clientToSendReceivedCodeTo != MAX_SRV_CLIENTS) {
     send(clientToSendReceivedCodeTo, stringDecode);
     clientToSendReceivedCodeTo = MAX_SRV_CLIENTS;
   }
-
 }
 
 String inData;
