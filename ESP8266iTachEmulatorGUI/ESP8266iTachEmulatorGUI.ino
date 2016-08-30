@@ -7,7 +7,7 @@
   Tested with
   - IrScrutinizer 1.1.2 from https://github.com/bengtmartensson/harctoolboxbundle
   - iPhone iRule app with remote created with cloud codes online at http://iruleathome.com
-  TODO: Implement capture https://github.com/sebastienwarin/IRremoteESP8266
+  TODO: Implement capture from a modulated receiver, e.g., https://www.analysir.com/blog/2016/01/14/esp8266-nodemcu-infrared-decoding-added-to-analysir/
         Implement repeats
         Implement more commands, e.g., stopir
         Check with OpenRemote http://sourceforge.net/projects/openremote/
