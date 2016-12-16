@@ -75,7 +75,7 @@ Circut for sending:
 
 Circut for receiving:
 
-* Most generic infrared receivers have the pins out, gnd, vcc when looking from the front. Connect out to pin D1 of the NodeMCU 1.0 module and connect gnd, vcc.
+* Most generic infrared receivers have the pins out, gnd, vcc when looking from the front. Connect out to pin D1 of the NodeMCU 1.0 module = GPIO5 of the ESP and connect gnd, vcc.
 
 Improvements regarding the hardware setup welcome! 
 
@@ -103,7 +103,6 @@ Connect with telnet to port 22 for debug output. I am using this debug port inst
 Pull requests welcome!
 
 * Switch everything to async, e.g., using ESPAsyncUDP
-* Implement receiving (sebastienwarin/IRremoteESP8266 supports it) using a TSOP
 * Implement learning - ideally we could use the sending LED for this 
 * A HTTP GUI for sending codes that are stored in SPIFFS and can be managed using a GUI
 * Implement a [GIRS server](https://github.com/bengtmartensson/AGirs/tree/master/src/GirsLite)
