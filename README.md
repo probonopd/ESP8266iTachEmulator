@@ -1,4 +1,4 @@
-# ESP8266iTachEmulator
+# ESP8266iTachEmulator [![Build Status](https://travis-ci.com/probonopd/ESP8266iTachEmulator.svg?branch=master)](https://travis-ci.com/probonopd/ESP8266iTachEmulator)
 
 Send and learn infrared remote control signals via WLAN using an ESP8266
 
